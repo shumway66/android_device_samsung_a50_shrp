@@ -113,3 +113,20 @@ TW_INCLUDE_LPTOOLS := true
 TW_INCLUDE_FASTBOOTD := true
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
+
+# ---- SHRP ----
+SHRP_PATH := device/samsung/a50
+SHRP_MAINTAINER := Gordon
+SHRP_DEVICE_CODE := a50
+SHRP_REC_TYPE := Normal
+SHRP_DEVICE_TYPE := A_Only
+SHRP_REC := /dev/block/platform/13520000.ufs/by-name/recovery
+SHRP_INTERNAL := /sdcard
+SHRP_EXTERNAL := /external_sd
+SHRP_OTG := /usb-otg
+SHRP_EDL_MODE := 0
+SHRP_FLASH := 0
+SHRP_NOTCH := true
+SHRP_EXPRESS := true
+SHRP_DARK := true
+
