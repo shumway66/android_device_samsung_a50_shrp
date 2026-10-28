@@ -96,3 +96,25 @@ mka recoveryimage
 ```
 
 Based on the TeamWin a50 device tree: https://github.com/TeamWin/android_device_samsung_a50
+
+## SHRP (SkyHawk Recovery Project) v3.2 build — by shumway66
+
+SHRP flags are added at the end of `BoardConfig.mk`.
+
+### Build
+```bash
+repo init -u https://github.com/SHRP/manifest.git -b shrp-12.1 --depth=1
+repo sync -c -j4 --no-clone-bundle --no-tags
+git clone -b shrp-12.1 https://github.com/shumway66/android_device_samsung_a50_shrp device/samsung/a50
+
+# Required fix: SHRP's vendor/twrp lacks libfscrypt, which TeamWin's system/core needs
+git clone --depth 1 -b android-12.1 https://github.com/TeamWin/android_vendor_twrp /tmp/twv
+cp -r /tmp/twv/libfscrypt vendor/twrp/
+
+. build/envsetup.sh
+export ALLOW_MISSING_DEPENDENCIES=true
+lunch twrp_a50-eng
+mka recoveryimage
+```
+
+Based on the TeamWin a50 device tree: https://github.com/TeamWin/android_device_samsung_a50
