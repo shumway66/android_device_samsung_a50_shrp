@@ -74,3 +74,18 @@ mka recoveryimage
 # limitations under the License.
 #
 ```
+
+## PitchBlack Recovery (PBRP) 4.0 build — by shumway66
+
+Adds `pb_a50.mk` (a copy of twrp_a50.mk — the product name is derived from the file name) and PB flags at the end of BoardConfig.mk.
+
+### Build
+```bash
+repo init -u https://github.com/PitchBlackRecoveryProject/manifest_pb -b android-12.1 --depth=1
+repo sync -c -j4 --no-clone-bundle --no-tags
+git clone -b pbrp-12.1 https://github.com/shumway66/android_device_samsung_a50_shrp device/samsung/a50
+. build/envsetup.sh
+export ALLOW_MISSING_DEPENDENCIES=true
+lunch pb_a50-eng
+mka pbrp
+```
