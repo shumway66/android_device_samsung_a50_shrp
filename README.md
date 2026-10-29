@@ -74,3 +74,21 @@ mka recoveryimage
 # limitations under the License.
 #
 ```
+
+## OrangeFox R12.0 build — by shumway66
+
+OrangeFox settings are in `vendorsetup.sh` (not BoardConfig.mk, per the OrangeFox wiki).
+
+### Build
+```bash
+git clone https://gitlab.com/OrangeFox/sync.git && cd sync
+./orangefox_sync.sh --branch 12.1 --path ~/fox_12.1
+cd ~/fox_12.1
+git clone -b fox_12.1 https://github.com/shumway66/android_device_samsung_a50_shrp device/samsung/a50
+source build/envsetup.sh
+source device/samsung/a50/vendorsetup.sh
+export ALLOW_MISSING_DEPENDENCIES=true
+lunch twrp_a50-eng
+mka adbd recoveryimage
+```
+Tip: use a fresh terminal, or a leftover OUT_DIR from another build can redirect the output.
